@@ -1,9 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:fruit_market/Core/utils/app_router.dart';
 import 'package:fruit_market/Core/utils/assets.dart';
+import 'package:go_router/go_router.dart';
 import 'package:svg_flutter/svg_flutter.dart';
 
-class SplashViewBody extends StatelessWidget {
+class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
+
+  @override
+  State<SplashViewBody> createState() => _SplashViewBodyState();
+}
+
+class _SplashViewBodyState extends State<SplashViewBody> {
+  @override
+  void initState() {
+    super.initState();
+    executeNavigation();
+  }
+
+  Future<void> executeNavigation() async {
+    await Future.delayed(const Duration(seconds: 3));
+    GoRouter.of(context).pushReplacement(AppRouter.kOnboardingRoute);
+  }
 
   @override
   Widget build(BuildContext context) {
