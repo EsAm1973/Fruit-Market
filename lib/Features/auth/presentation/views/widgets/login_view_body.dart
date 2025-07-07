@@ -46,11 +46,7 @@ class LoginViewBody extends StatelessWidget {
             const SizedBox(height: 33),
             CustomButtom(onpressed: () {}, text: 'تسجيل دخول'),
             const SizedBox(height: 33),
-            DontHaveAccount(
-              onpressed: () {
-                //GoRouter.of(context).pushReplacement(AppRouter.kRegisterRoute);
-              },
-            ),
+            const DontHaveAccount(),
             const SizedBox(height: 33),
             const OrDivider(),
             SizedBox(height: 16),
