@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:fruit_market/Core/services/shared_prefrences_sengelton.dart';
+import 'package:fruit_market/Core/utils/app_colors.dart';
 import 'package:fruit_market/Core/utils/app_router.dart';
 import 'package:fruit_market/generated/l10n.dart';
 
@@ -25,7 +26,11 @@ class FruitMarket extends StatelessWidget {
       locale: Locale('ar', 'AE'),
       routerConfig: AppRouter.router,
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(fontFamily: 'Cairo'),
+      theme: ThemeData(
+        scaffoldBackgroundColor: Colors.white,
+        fontFamily: 'Cairo',
+        colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primaryColor),
+      ),
     );
   }
 }
