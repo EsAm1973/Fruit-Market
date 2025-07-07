@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:fruit_market/Core/services/shared_prefrences_sengelton.dart';
 import 'package:fruit_market/Core/utils/app_router.dart';
 import 'package:fruit_market/Core/utils/assets.dart';
+import 'package:fruit_market/constants.dart';
 import 'package:go_router/go_router.dart';
 import 'package:svg_flutter/svg_flutter.dart';
 
@@ -19,8 +21,14 @@ class _SplashViewBodyState extends State<SplashViewBody> {
   }
 
   Future<void> executeNavigation() async {
-    await Future.delayed(const Duration(seconds: 3));
-    GoRouter.of(context).pushReplacement(AppRouter.kOnboardingRoute);
+    bool isOnboardingViewed = Prefs.getBool(isOnboadingViewSeenKey);
+    if (isOnboardingViewed) {
+      await Future.delayed(const Duration(seconds: 3));
+      GoRouter.of(context).pushReplacement(AppRouter.kLoginRoute);
+    } else {
+      await Future.delayed(const Duration(seconds: 3));
+      GoRouter.of(context).pushReplacement(AppRouter.kOnboardingRoute);
+    }
   }
 
   @override

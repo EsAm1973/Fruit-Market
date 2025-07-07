@@ -1,8 +1,12 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:fruit_market/Core/services/shared_prefrences_sengelton.dart';
 import 'package:fruit_market/Core/utils/app_colors.dart';
+import 'package:fruit_market/Core/utils/app_router.dart';
 import 'package:fruit_market/Core/widgets/custom_buttom.dart';
 import 'package:fruit_market/Features/onboarding/presentation/views/widgets/onboarding_page_view.dart';
+import 'package:fruit_market/constants.dart';
+import 'package:go_router/go_router.dart';
 
 class OnboardingViewBody extends StatefulWidget {
   const OnboardingViewBody({super.key});
@@ -60,7 +64,13 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
           maintainState: true,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: CustomButtom(onpressed: () {}, text: 'ابدأ الان'),
+            child: CustomButtom(
+              onpressed: () {
+                Prefs.setBool(isOnboadingViewSeenKey, true);
+                GoRouter.of(context).pushReplacement(AppRouter.kLoginRoute);
+              },
+              text: 'ابدأ الان',
+            ),
           ),
         ),
         SizedBox(height: 40),

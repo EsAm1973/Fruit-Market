@@ -38,6 +38,7 @@ dependencies:
   go_router: ^16.0.0
   svg_flutter: ^0.0.1
   dots_indicator: ^4.0.1
+  shared_preferences: ^2.5.3
 
 dev_dependencies:
   flutter_launcher_icons: ^0.14.4

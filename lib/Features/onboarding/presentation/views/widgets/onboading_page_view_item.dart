@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:fruit_market/Core/services/shared_prefrences_sengelton.dart';
+import 'package:fruit_market/Core/utils/app_router.dart';
 import 'package:fruit_market/Core/utils/app_text_styles.dart';
+import 'package:fruit_market/constants.dart';
+import 'package:go_router/go_router.dart';
 import 'package:svg_flutter/svg_flutter.dart';
 
 class PageViewItem extends StatelessWidget {
@@ -37,10 +41,18 @@ class PageViewItem extends StatelessWidget {
                 visible: isVisible,
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: Text(
-                    'تخط',
-                    style: AppTextStyles.regular13.copyWith(
-                      color: Color(0xFF949D9E),
+                  child: GestureDetector(
+                    onTap: () {
+                      Prefs.setBool(isOnboadingViewSeenKey, true);
+                      GoRouter.of(
+                        context,
+                      ).pushReplacement(AppRouter.kLoginRoute);
+                    },
+                    child: Text(
+                      'تخط',
+                      style: AppTextStyles.regular13.copyWith(
+                        color: Color(0xFF949D9E),
+                      ),
                     ),
                   ),
                 ),

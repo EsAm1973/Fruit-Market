@@ -1,3 +1,4 @@
+import 'package:fruit_market/Features/auth/presentation/views/login_view.dart';
 import 'package:fruit_market/Features/onboarding/presentation/views/onboarding_view.dart';
 import 'package:fruit_market/Features/splash/presentation/views/splash_view.dart';
 import 'package:go_router/go_router.dart';
@@ -5,7 +6,7 @@ import 'package:go_router/go_router.dart';
 abstract class AppRouter {
   static const String kSplashRoute = '/';
   static const String kOnboardingRoute = '/onboarding';
-
+  static const String kLoginRoute = '/login';
   static final router = GoRouter(
     routes: [
       GoRoute(
@@ -15,6 +16,10 @@ abstract class AppRouter {
       GoRoute(
         path: kOnboardingRoute,
         builder: (context, state) => const OnboardingView(),
+      ),
+      GoRoute(
+        path: kLoginRoute,
+        builder: (context, state) => const LoginView(),
       ),
     ],
   );
