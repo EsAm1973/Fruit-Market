@@ -12,14 +12,14 @@ class FirebaseAuthServices {
       return credential.user!;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-        throw CustomExceptions(message: 'weak-password');
-      } else if (e.code == 'email-already-in-use') {
-        throw CustomExceptions(message: 'email already in use');
+        throw CustomExceptions(message: 'كلمة المرور ضعيفة');
+      } else if (e.code == 'البريد الالكتروني مستخدم بالفعل') {
+        throw CustomExceptions(message: 'البريد الالكتروني مستخدم بالفعل');
       } else {
-        throw CustomExceptions(message: 'something went wrong, try again');
+        throw CustomExceptions(message: 'هناك خطأ ما, حاول مرة أخرى');
       }
     } catch (e) {
-      throw CustomExceptions(message: 'something went wrong, try again');
+      throw CustomExceptions(message: 'هناك خطأ ما, حاول مرة أخرى');
     }
   }
 }

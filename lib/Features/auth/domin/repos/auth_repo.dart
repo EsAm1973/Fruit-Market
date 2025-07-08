@@ -6,6 +6,6 @@ abstract class AuthRepo {
   Future<Either<Failures, UserEntity>> createUserWithEmailAndPassword({
     required String email,
     required String password,
-    required String uid,
+    required String name,
   });
 }

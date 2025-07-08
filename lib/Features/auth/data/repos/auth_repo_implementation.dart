@@ -13,7 +13,7 @@ class AuthRepoImplementation extends AuthRepo {
   Future<Either<Failures, UserEntity>> createUserWithEmailAndPassword({
     required String email,
     required String password,
-    required String uid,
+    required String name,
   }) async {
     try {
       var user = await firebaseAuthServices.createUserWithEmailAndPassword(
@@ -24,7 +24,7 @@ class AuthRepoImplementation extends AuthRepo {
     } on CustomExceptions catch (e) {
       return Left(ServerFailure(e.message));
     } catch (e) {
-      return Left(ServerFailure('An error occurred, try again'));
+      return Left(ServerFailure('هناك خطأ ما, حاول مرة أخرى'));
     }
   }
 }
