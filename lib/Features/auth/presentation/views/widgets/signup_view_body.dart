@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_market/Core/helper_functions/build_error_bar.dart';
+import 'package:fruit_market/Core/utils/app_router.dart';
 import 'package:fruit_market/Core/widgets/custom_buttom.dart';
 import 'package:fruit_market/Core/widgets/custom_text_feild.dart';
 import 'package:fruit_market/Core/widgets/password_feild.dart';
 import 'package:fruit_market/Features/auth/presentation/manager/signup%20cubit/signup_cubit.dart';
 import 'package:fruit_market/Features/auth/presentation/views/widgets/signup_to_login.dart';
 import 'package:fruit_market/Features/auth/presentation/views/widgets/terms_and_conditions.dart';
+import 'package:go_router/go_router.dart';
 
 class SignupViewBody extends StatefulWidget {
   const SignupViewBody({super.key});
@@ -28,7 +30,7 @@ class _SignupViewBodyState extends State<SignupViewBody> {
           buildErrorBar(context, state.message);
         }
         if (state is SignupSuccess) {
-          buildErrorBar(context, 'تم التسجيل بنجاح');
+          GoRouter.of(context).pushReplacement(AppRouter.kLoginRoute);
         }
       },
       builder: (context, state) {

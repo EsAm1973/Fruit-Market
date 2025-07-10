@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:fruit_market/Core/errors/exceptions.dart';
 import 'package:fruit_market/Core/errors/failures.dart';
@@ -19,11 +21,13 @@ class AuthRepoImplementation extends AuthRepo {
       var user = await firebaseAuthServices.createUserWithEmailAndPassword(
         email: email,
         password: password,
+        displayName: name,
       );
       return Right(UserModel.fromFirebaseUser(user));
     } on CustomExceptions catch (e) {
       return Left(ServerFailure(e.message));
     } catch (e) {
+      log("Exception in AuthRepoImplementation.createUserWithEmailAndPassword: $e");
       return Left(ServerFailure(e.toString()));
     }
   }
