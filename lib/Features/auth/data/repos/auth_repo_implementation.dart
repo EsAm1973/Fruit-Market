@@ -27,7 +27,9 @@ class AuthRepoImplementation extends AuthRepo {
     } on CustomExceptions catch (e) {
       return Left(ServerFailure(e.message));
     } catch (e) {
-      log("Exception in AuthRepoImplementation.createUserWithEmailAndPassword: $e");
+      log(
+        "Exception in AuthRepoImplementation.createUserWithEmailAndPassword: $e",
+      );
       return Left(ServerFailure(e.toString()));
     }
   }
@@ -47,6 +49,17 @@ class AuthRepoImplementation extends AuthRepo {
       return Left(ServerFailure(e.message));
     } catch (e) {
       log("Exception in AuthRepoImplementation.signInWithEmailAndPassword: $e");
+      return Left(ServerFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failures, UserEntity>> signInWithGoogle() async {
+    try {
+      var user = await firebaseAuthServices.signInWithGoogle();
+      return Right(UserModel.fromFirebaseUser(user));
+    } catch (e) {
+      log("Exception in AuthRepoImplementation.signInWithGoogle: $e");
       return Left(ServerFailure(e.toString()));
     }
   }
