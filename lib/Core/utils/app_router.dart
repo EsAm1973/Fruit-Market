@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_market/Core/services/getit_service.dart';
 import 'package:fruit_market/Features/auth/domin/repos/auth_repo.dart';
+import 'package:fruit_market/Features/auth/presentation/manager/login%20cubit/login_cubit.dart';
 import 'package:fruit_market/Features/auth/presentation/manager/signup%20cubit/signup_cubit.dart';
 import 'package:fruit_market/Features/auth/presentation/views/login_view.dart';
 import 'package:fruit_market/Features/auth/presentation/views/signup_view.dart';
@@ -25,7 +26,11 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: kLoginRoute,
-        builder: (context, state) => const LoginView(),
+        builder:
+            (context, state) => BlocProvider(
+              create: (context) => LoginCubit(getIt<AuthRepo>()),
+              child: const LoginView(),
+            ),
       ),
       GoRoute(
         path: kRegisterRoute,
