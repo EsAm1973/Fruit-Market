@@ -19,6 +19,7 @@ class _SignupViewBodyState extends State<SignupViewBody> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   late String name, email, password;
+  late bool termsAccepted = false;
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<SignupCubit, SignupState>(
@@ -54,7 +55,13 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                   SizedBox(height: 16),
                   PasswordFeild(onSaved: (value) => password = value!),
                   SizedBox(height: 16),
-                  TermsCheckbox(),
+                  TermsCheckbox(
+                    onChecked: (value) {
+                      setState(() {
+                        termsAccepted = value;
+                      });
+                    },
+                  ),
                   SizedBox(height: 30),
                   BlocBuilder<SignupCubit, SignupState>(
                     builder: (context, state) {
@@ -66,13 +73,20 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                           if (formKey.currentState!.validate()) {
                             autovalidateMode = AutovalidateMode.disabled;
                             formKey.currentState!.save();
-                            context
-                                .read<SignupCubit>()
-                                .createUserWithEmailAndPassword(
-                                  email: email,
-                                  password: password,
-                                  name: name,
-                                );
+                            if (termsAccepted) {
+                              context
+                                  .read<SignupCubit>()
+                                  .createUserWithEmailAndPassword(
+                                    email: email,
+                                    password: password,
+                                    name: name,
+                                  );
+                            } else {
+                              buildErrorBar(
+                                context,
+                                'يجب الموافقة على الشروط والاحكام',
+                              );
+                            }
                           } else {
                             setState(() {
                               autovalidateMode = AutovalidateMode.always;

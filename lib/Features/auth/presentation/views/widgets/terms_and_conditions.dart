@@ -3,21 +3,14 @@ import 'package:fruit_market/Core/utils/app_colors.dart';
 import 'package:fruit_market/Core/utils/app_text_styles.dart';
 
 class TermsCheckbox extends StatefulWidget {
-  const TermsCheckbox({super.key});
-
+  const TermsCheckbox({super.key, required this.onChecked});
+  final ValueChanged<bool> onChecked;
   @override
   _TermsCheckboxState createState() => _TermsCheckboxState();
 }
 
 class _TermsCheckboxState extends State<TermsCheckbox> {
   bool _agreed = false;
-
-  // void _onLinkTap() {
-  //   // هنا ضع المنطق عند الضغط على "الشروط والأحكام الخاصة بنا"
-  //   // مثلاً التنقل لشاشة الشروط:
-  //   // Navigator.pushNamed(context, '/terms');
-  //   print('تم الضغط على الشروط والأحكام');
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +26,9 @@ class _TermsCheckboxState extends State<TermsCheckbox> {
             ),
             side: BorderSide(color: const Color(0xFFE6E9E9), width: 1.50),
             value: _agreed,
+
             onChanged: (value) {
+              widget.onChecked(value ?? false);
               setState(() {
                 _agreed = value ?? false;
               });
