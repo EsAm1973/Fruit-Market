@@ -1,13 +1,12 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruit_market/Core/helper_functions/build_error_bar.dart';
 import 'package:fruit_market/Core/widgets/custom_buttom.dart';
 import 'package:fruit_market/Core/widgets/custom_text_feild.dart';
+import 'package:fruit_market/Core/widgets/password_feild.dart';
 import 'package:fruit_market/Features/auth/presentation/manager/signup%20cubit/signup_cubit.dart';
 import 'package:fruit_market/Features/auth/presentation/views/widgets/signup_to_login.dart';
 import 'package:fruit_market/Features/auth/presentation/views/widgets/terms_and_conditions.dart';
-import 'package:fruit_market/generated/l10n.dart';
 
 class SignupViewBody extends StatefulWidget {
   const SignupViewBody({super.key});
@@ -25,13 +24,10 @@ class _SignupViewBodyState extends State<SignupViewBody> {
     return BlocConsumer<SignupCubit, SignupState>(
       listener: (context, state) {
         if (state is SignupError) {
-          ScaffoldMessenger.of(
-            context,
-          ).showSnackBar(SnackBar(content: Text(state.message)));
-        } else if (state is SignupSuccess) {
-          ScaffoldMessenger.of(
-            context,
-          ).showSnackBar(SnackBar(content: Text('تم التسجيل بنجاح')));
+          buildErrorBar(context, state.message);
+        }
+        if (state is SignupSuccess) {
+          buildErrorBar(context, 'تم التسجيل بنجاح');
         }
       },
       builder: (context, state) {
@@ -56,12 +52,7 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                     keyboardType: TextInputType.emailAddress,
                   ),
                   SizedBox(height: 16),
-                  CustomTextFormFeild(
-                    onSaved: (value) => password = value!,
-                    hintText: 'كلمة المرور',
-                    keyboardType: TextInputType.name,
-                    suffixIcon: Icon(Icons.visibility_off),
-                  ),
+                  PasswordFeild(onSaved: (value) => password = value!),
                   SizedBox(height: 16),
                   TermsCheckbox(),
                   SizedBox(height: 30),
