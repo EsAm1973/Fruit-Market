@@ -111,7 +111,9 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                   LoginSocialButtom(
                     title: 'فيسبوك',
                     image: Assets.imagesFacebookIcon,
-                    onpressed: () {},
+                    onpressed: () {
+                      context.read<LoginCubit>().signInWithFacebook();
+                    },
                   ),
                 ],
               ),

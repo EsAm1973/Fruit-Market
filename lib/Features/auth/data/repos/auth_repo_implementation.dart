@@ -63,4 +63,15 @@ class AuthRepoImplementation extends AuthRepo {
       return Left(ServerFailure(e.toString()));
     }
   }
+
+  @override
+  Future<Either<Failures, UserEntity>> signInWithFacebook() async {
+    try {
+      var user = await firebaseAuthServices.signInWithFacebook();
+      return Right(UserModel.fromFirebaseUser(user));
+    } catch (e) {
+      log("Exception in AuthRepoImplementation.signInWithFacebook: $e");
+      return Left(ServerFailure(e.toString()));
+    }
+  }
 }
