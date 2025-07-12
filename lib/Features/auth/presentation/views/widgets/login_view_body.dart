@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_market/Core/helper_functions/build_error_bar.dart';
@@ -102,12 +104,18 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                     },
                   ),
                   const SizedBox(height: 16),
-                  LoginSocialButtom(
-                    title: 'أبل',
-                    image: Assets.imagesAppleIcon,
-                    onpressed: () {},
-                  ),
-                  const SizedBox(height: 16),
+                  Platform.isIOS
+                      ? Column(
+                        children: [
+                          LoginSocialButtom(
+                            title: 'أبل',
+                            image: Assets.imagesAppleIcon,
+                            onpressed: () {},
+                          ),
+                          const SizedBox(height: 16),
+                        ],
+                      )
+                      : SizedBox(),
                   LoginSocialButtom(
                     title: 'فيسبوك',
                     image: Assets.imagesFacebookIcon,
