@@ -56,7 +56,8 @@ class AuthRepoImplementation extends AuthRepo {
         email: email,
         password: password,
       );
-      return Right(UserModel.fromFirebaseUser(user));
+      var userEntity = await getUserData(userId: user.uid);
+      return Right(userEntity);
     } on CustomExceptions catch (e) {
       return Left(ServerFailure(e.message));
     } catch (e) {
@@ -71,7 +72,15 @@ class AuthRepoImplementation extends AuthRepo {
     try {
       user = await firebaseAuthServices.signInWithGoogle();
       var userEntity = UserModel.fromFirebaseUser(user);
-      await addUserData(user: userEntity);
+      var isUserExists = await databaseService.checkIfDocumentExists(
+        path: BackendEndpoints.isUserExists,
+        documentId: user.uid,
+      );
+      if (isUserExists) {
+        await getUserData(userId: user.uid);
+      } else {
+        await addUserData(user: userEntity);
+      }
       return Right(userEntity);
     } catch (e) {
       if (user != null) await firebaseAuthServices.deleteUser();
@@ -86,7 +95,15 @@ class AuthRepoImplementation extends AuthRepo {
     try {
       user = await firebaseAuthServices.signInWithFacebook();
       var userEntity = UserModel.fromFirebaseUser(user);
-      await addUserData(user: userEntity);
+      var isUserExists = await databaseService.checkIfDocumentExists(
+        path: BackendEndpoints.isUserExists,
+        documentId: user.uid,
+      );
+      if (isUserExists) {
+        await getUserData(userId: user.uid);
+      } else {
+        await addUserData(user: userEntity);
+      }
       return Right(userEntity);
     } catch (e) {
       if (user != null) await firebaseAuthServices.deleteUser();
@@ -101,10 +118,25 @@ class AuthRepoImplementation extends AuthRepo {
       await databaseService.addData(
         path: BackendEndpoints.addUserData,
         data: user.toMap(),
+        documentId: user.uid,
       );
     } catch (e) {
       log("Exception in AuthRepoImplementation.addUserData: $e");
       return Left(ServerFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<UserEntity> getUserData({required String userId}) async {
+    try {
+      var data = await databaseService.getData(
+        path: BackendEndpoints.getUserData,
+        documentId: userId,
+      );
+      return UserModel.fromJson(data);
+    } catch (e) {
+      log("Exception in AuthRepoImplementation.getUserData: $e");
+      return UserModel.fromJson({});
     }
   }
 }
