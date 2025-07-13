@@ -67,10 +67,14 @@ class AuthRepoImplementation extends AuthRepo {
 
   @override
   Future<Either<Failures, UserEntity>> signInWithGoogle() async {
+    User? user;
     try {
-      var user = await firebaseAuthServices.signInWithGoogle();
-      return Right(UserModel.fromFirebaseUser(user));
+      user = await firebaseAuthServices.signInWithGoogle();
+      var userEntity = UserModel.fromFirebaseUser(user);
+      await addUserData(user: userEntity);
+      return Right(userEntity);
     } catch (e) {
+      if (user != null) await firebaseAuthServices.deleteUser();
       log("Exception in AuthRepoImplementation.signInWithGoogle: $e");
       return Left(ServerFailure(e.toString()));
     }
@@ -78,10 +82,14 @@ class AuthRepoImplementation extends AuthRepo {
 
   @override
   Future<Either<Failures, UserEntity>> signInWithFacebook() async {
+    User? user;
     try {
-      var user = await firebaseAuthServices.signInWithFacebook();
-      return Right(UserModel.fromFirebaseUser(user));
+      user = await firebaseAuthServices.signInWithFacebook();
+      var userEntity = UserModel.fromFirebaseUser(user);
+      await addUserData(user: userEntity);
+      return Right(userEntity);
     } catch (e) {
+      if (user != null) await firebaseAuthServices.deleteUser();
       log("Exception in AuthRepoImplementation.signInWithFacebook: $e");
       return Left(ServerFailure(e.toString()));
     }
