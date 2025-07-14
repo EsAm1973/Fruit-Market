@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_market/Core/widgets/search_textfeild.dart';
+import 'package:fruit_market/Features/home/presentation/views/widgets/best_selling_grid.dart';
+import 'package:fruit_market/Features/home/presentation/views/widgets/best_silling_header.dart';
 import 'package:fruit_market/Features/home/presentation/views/widgets/featured_list.dart';
 import 'package:fruit_market/Features/home/presentation/views/widgets/home_custom_appbar.dart';
 
@@ -20,9 +22,13 @@ class HomeViewBody extends StatelessWidget {
                 SearchTextfeild(),
                 SizedBox(height: 12),
                 FeaturedList(),
+                SizedBox(height: 15),
+                BestSillingHeader(),
+                SizedBox(height: 12),
               ],
             ),
           ),
+          BestSellingGrid(),
         ],
       ),
     );
