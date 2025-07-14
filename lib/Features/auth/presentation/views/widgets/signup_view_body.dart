@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_market/Core/helper_functions/build_error_bar.dart';
-import 'package:fruit_market/Core/utils/app_router.dart';
 import 'package:fruit_market/Core/widgets/custom_buttom.dart';
 import 'package:fruit_market/Core/widgets/custom_text_feild.dart';
 import 'package:fruit_market/Core/widgets/password_feild.dart';
@@ -30,7 +29,7 @@ class _SignupViewBodyState extends State<SignupViewBody> {
           buildErrorBar(context, state.message);
         }
         if (state is SignupSuccess) {
-          GoRouter.of(context).pushReplacement(AppRouter.kLoginRoute);
+          GoRouter.of(context).pop();
         }
       },
       builder: (context, state) {

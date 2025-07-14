@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_market/Core/helper_functions/build_error_bar.dart';
 import 'package:fruit_market/Core/utils/app_colors.dart';
+import 'package:fruit_market/Core/utils/app_router.dart';
 import 'package:fruit_market/Core/utils/app_text_styles.dart';
 import 'package:fruit_market/Core/utils/assets.dart';
 import 'package:fruit_market/Core/widgets/custom_buttom.dart';
@@ -13,6 +14,7 @@ import 'package:fruit_market/Features/auth/presentation/manager/login%20cubit/lo
 import 'package:fruit_market/Features/auth/presentation/views/widgets/login_dont_have_account.dart';
 import 'package:fruit_market/Features/auth/presentation/views/widgets/login_social_buttom.dart';
 import 'package:fruit_market/Features/auth/presentation/views/widgets/or_divider.dart';
+import 'package:go_router/go_router.dart';
 
 class LoginViewBody extends StatefulWidget {
   const LoginViewBody({super.key});
@@ -32,8 +34,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
         if (state is LoginError) {
           buildErrorBar(context, state.message);
         } else if (state is LoginSuccess) {
-          print('///////////// login success //////////////');
-          //GoRouter.of(context).pushReplacement(AppRouter.kHomeRoute);
+          GoRouter.of(context).pushReplacement(AppRouter.kHomeRoute);
         }
       },
       builder: (context, state) {
