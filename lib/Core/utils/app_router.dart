@@ -5,6 +5,7 @@ import 'package:fruit_market/Features/auth/presentation/manager/login%20cubit/lo
 import 'package:fruit_market/Features/auth/presentation/manager/signup%20cubit/signup_cubit.dart';
 import 'package:fruit_market/Features/auth/presentation/views/login_view.dart';
 import 'package:fruit_market/Features/auth/presentation/views/signup_view.dart';
+import 'package:fruit_market/Features/best%20selling%20products/presentation/views/best_selling_view.dart';
 import 'package:fruit_market/Features/home/presentation/views/home_view.dart';
 import 'package:fruit_market/Features/onboarding/presentation/views/onboarding_view.dart';
 import 'package:fruit_market/Features/splash/presentation/views/splash_view.dart';
@@ -16,6 +17,7 @@ abstract class AppRouter {
   static const String kLoginRoute = '/login';
   static const String kRegisterRoute = '/register';
   static const String kHomeRoute = '/home';
+  static const String kBestSellingRoute = '/best-selling';
   static final router = GoRouter(
     routes: [
       GoRoute(
@@ -43,6 +45,10 @@ abstract class AppRouter {
             ),
       ),
       GoRoute(path: kHomeRoute, builder: (context, state) => const HomeView()),
+      GoRoute(
+        path: kBestSellingRoute,
+        builder: (context, state) => const BestSellingView(),
+      ),
     ],
   );
 }
