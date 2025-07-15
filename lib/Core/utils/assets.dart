@@ -14,6 +14,14 @@ class Assets {
   /// assets/images/bottom_splash.svg
   static const String imagesBottomSplash = "assets/images/bottom_splash.svg";
 
+  /// Assets for imagesCarticonFilled
+  /// assets/images/carticon_filled.svg
+  static const String imagesCarticonFilled = "assets/images/carticon_filled.svg";
+
+  /// Assets for imagesCarticonOutlined
+  /// assets/images/carticon_outlined.svg
+  static const String imagesCarticonOutlined = "assets/images/carticon_outlined.svg";
+
   /// Assets for imagesFacebookIcon
   /// assets/images/facebook_icon.svg
   static const String imagesFacebookIcon = "assets/images/facebook_icon.svg";
@@ -25,6 +33,14 @@ class Assets {
   /// Assets for imagesGoogleIcon
   /// assets/images/google_icon.svg
   static const String imagesGoogleIcon = "assets/images/google_icon.svg";
+
+  /// Assets for imagesHomeiconFilled
+  /// assets/images/homeicon_filled.svg
+  static const String imagesHomeiconFilled = "assets/images/homeicon_filled.svg";
+
+  /// Assets for imagesHomeiconOutlined
+  /// assets/images/homeicon_outlined.svg
+  static const String imagesHomeiconOutlined = "assets/images/homeicon_outlined.svg";
 
   /// Assets for imagesLogoSplash
   /// assets/images/logo_splash.svg
@@ -53,6 +69,22 @@ class Assets {
   /// Assets for imagesPlantSplash
   /// assets/images/plant_splash.svg
   static const String imagesPlantSplash = "assets/images/plant_splash.svg";
+
+  /// Assets for imagesProductsiconFilled
+  /// assets/images/productsicon_filled.svg
+  static const String imagesProductsiconFilled = "assets/images/productsicon_filled.svg";
+
+  /// Assets for imagesProductsiconOutlined
+  /// assets/images/productsicon_outlined.svg
+  static const String imagesProductsiconOutlined = "assets/images/productsicon_outlined.svg";
+
+  /// Assets for imagesProfileiconFilled
+  /// assets/images/profileicon_filled.svg
+  static const String imagesProfileiconFilled = "assets/images/profileicon_filled.svg";
+
+  /// Assets for imagesProfileiconOutlined
+  /// assets/images/profileicon_outlined.svg
+  static const String imagesProfileiconOutlined = "assets/images/profileicon_outlined.svg";
 
   /// Assets for imagesSearchIcon
   /// assets/images/search_icon.svg
