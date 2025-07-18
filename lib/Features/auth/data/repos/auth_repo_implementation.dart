@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
@@ -6,10 +7,12 @@ import 'package:fruit_market/Core/errors/exceptions.dart';
 import 'package:fruit_market/Core/errors/failures.dart';
 import 'package:fruit_market/Core/services/database_service.dart';
 import 'package:fruit_market/Core/services/firebase_auth_services.dart';
+import 'package:fruit_market/Core/services/shared_prefrences_sengelton.dart';
 import 'package:fruit_market/Core/utils/backend_endpoints.dart';
 import 'package:fruit_market/Features/auth/data/models/user_model.dart';
 import 'package:fruit_market/Features/auth/domin/entites/user_entity.dart';
 import 'package:fruit_market/Features/auth/domin/repos/auth_repo.dart';
+import 'package:fruit_market/constants.dart';
 
 class AuthRepoImplementation extends AuthRepo {
   final FirebaseAuthServices firebaseAuthServices;
@@ -57,6 +60,7 @@ class AuthRepoImplementation extends AuthRepo {
         password: password,
       );
       var userEntity = await getUserData(userId: user.uid);
+      await saveUserData(user: userEntity);
       return Right(userEntity);
     } on CustomExceptions catch (e) {
       return Left(ServerFailure(e.message));
@@ -81,6 +85,7 @@ class AuthRepoImplementation extends AuthRepo {
       } else {
         await addUserData(user: userEntity);
       }
+      await saveUserData(user: userEntity);
       return Right(userEntity);
     } catch (e) {
       if (user != null) await firebaseAuthServices.deleteUser();
@@ -104,6 +109,7 @@ class AuthRepoImplementation extends AuthRepo {
       } else {
         await addUserData(user: userEntity);
       }
+      await saveUserData(user: userEntity);
       return Right(userEntity);
     } catch (e) {
       if (user != null) await firebaseAuthServices.deleteUser();
@@ -117,7 +123,7 @@ class AuthRepoImplementation extends AuthRepo {
     try {
       await databaseService.addData(
         path: BackendEndpoints.addUserData,
-        data: user.toMap(),
+        data: UserModel.fromEntity(user).toMap(),
         documentId: user.uid,
       );
     } catch (e) {
@@ -138,5 +144,11 @@ class AuthRepoImplementation extends AuthRepo {
       log("Exception in AuthRepoImplementation.getUserData: $e");
       return UserModel.fromJson({});
     }
+  }
+
+  @override
+  Future<void> saveUserData({required UserEntity user}) async {
+    var jsonData = jsonEncode(UserModel.fromEntity(user).toMap());
+    await Prefs.setString(kuserData, jsonData);
   }
 }
