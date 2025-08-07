@@ -18,7 +18,7 @@ class ProductModel {
   final num averageRating;
   final num ratingCount;
   final List<ReviewModel> reviews;
-  final int sillingCount;
+  final int sellingCount;
 
   ProductModel({
     required this.productName,
@@ -35,7 +35,7 @@ class ProductModel {
     required this.averageRating,
     required this.ratingCount,
     required this.reviews,
-    this.sillingCount = 0,
+    this.sellingCount = 0,
   });
 
   factory ProductModel.fromJson(Map<String, dynamic> json) {
@@ -57,6 +57,7 @@ class ProductModel {
           (json['reviews'] as List)
               .map((e) => ReviewModel.fromJson(e))
               .toList(),
+      sellingCount: json['sellingCount'],
     );
   }
 
@@ -94,6 +95,7 @@ class ProductModel {
       'averageRating': averageRating,
       'ratingCount': ratingCount,
       'reviews': reviews.map((review) => review.toJson()).toList(),
+      'sellingCount': sellingCount,
     };
   }
 }

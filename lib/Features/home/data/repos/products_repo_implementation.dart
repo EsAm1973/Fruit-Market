@@ -20,4 +20,23 @@ class ProductsRepoImplementation implements ProductsRepo {
       return Left(ServerFailure('Failed to get products'));
     }
   }
+
+  @override
+  Future<Either<Failures, List<ProductEntity>>> getBestSellingProducts() async {
+    try {
+      final rawList = await databaseService.getCollection(
+        path: 'products',
+        orderBy: 'sellingCount',
+        descending: true,
+        limit: 10,
+      );
+      List<ProductModel> bestSellingProducts =
+          rawList.map((e) => ProductModel.fromJson(e)).toList();
+      List<ProductEntity> bestSellingEntites =
+          bestSellingProducts.map((e) => e.toEntity()).toList();
+      return Right(bestSellingEntites);
+    } on Exception {
+      return Left(ServerFailure('Failed to get best selling products'));
+    }
+  }
 }

@@ -14,5 +14,11 @@ abstract class DatabaseService {
     required String documentId,
   });
 
-  Future<List<Map<String, dynamic>>> getCollection({required String path});
+  Future<List<Map<String, dynamic>>> getCollection({
+    required String path,
+    String? orderBy, // اسم الحقل للترتيب
+    bool descending = false, // اتجاه الترتيب
+    int? limit, // عدد النتائج الأقصى
+    Map<String, dynamic>? whereEqual,
+  });
 }
