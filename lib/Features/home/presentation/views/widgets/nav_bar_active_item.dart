@@ -11,7 +11,7 @@ class ActiveIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        padding: EdgeInsets.only(left: 16),
+        padding: const EdgeInsets.only(left: 16),
         decoration: ShapeDecoration(
           color: const Color(0xFFEEEEEE),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
@@ -30,7 +30,7 @@ class ActiveIcon extends StatelessWidget {
               ),
               child: Center(child: SvgPicture.asset(iconPath)),
             ),
-            SizedBox(width: 4),
+            const SizedBox(width: 4),
             Text(
               name,
               style: AppTextStyles.semibold11.copyWith(

@@ -8,17 +8,17 @@ class OrDivider extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Expanded(child: Divider(color: const Color(0xFFDCDEDE))),
-        SizedBox(width: 18,),
+        const Expanded(child: Divider(color: Color(0xFFDCDEDE))),
+        const SizedBox(width: 18,),
         Text(
           'أو',
           style: AppTextStyles.semibold16.copyWith(
-            color: Color(0xFF0C0D0D),
+            color: const Color(0xFF0C0D0D),
             height: 1.40,
           ),
         ),
-        SizedBox(width: 18,),
-        Expanded(child: Divider(color: const Color(0xFFDCDEDE))),
+        const SizedBox(width: 18,),
+        const Expanded(child: Divider(color: Color(0xFFDCDEDE))),
       ],
     );
   }

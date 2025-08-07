@@ -21,9 +21,9 @@ class HomeCustomAppBar extends StatelessWidget {
         style: AppTextStyles.bold16.copyWith(color: const Color(0xFF0C0D0D)),
       ),
       trailing: Container(
-        padding: EdgeInsets.all(16),
-        decoration: ShapeDecoration(
-          color: const Color(0xFFEEF8ED) /* green-50 */,
+        padding: const EdgeInsets.all(16),
+        decoration: const ShapeDecoration(
+          color: Color(0xFFEEF8ED) /* green-50 */,
           shape: OvalBorder(),
         ),
         child: SvgPicture.asset(

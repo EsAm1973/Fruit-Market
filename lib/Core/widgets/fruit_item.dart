@@ -20,14 +20,14 @@ class FruitItem extends StatelessWidget {
             // top: 0,
             child: IconButton(
               onPressed: () {},
-              icon: Icon(Icons.favorite_outline),
+              icon: const Icon(Icons.favorite_outline),
             ),
           ),
-          SizedBox(height: 24),
+          const SizedBox(height: 24),
           Positioned.fill(
             child: Column(
               children: [
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Image.asset(Assets.imagesWatermelonTest),
                 ListTile(
                   title: Text(
@@ -51,7 +51,7 @@ class FruitItem extends StatelessWidget {
                             color: const Color(0xFFF8C76D),
                           ),
                         ),
-                        TextSpan(text: ' '),
+                        const TextSpan(text: ' '),
                         TextSpan(
                           text: 'الكيلو',
                           style: AppTextStyles.semibold13.copyWith(
@@ -62,7 +62,7 @@ class FruitItem extends StatelessWidget {
                     ),
                     textAlign: TextAlign.right,
                   ),
-                  trailing: CircleAvatar(
+                  trailing: const CircleAvatar(
                     backgroundColor: AppColors.primaryColor,
                     child: Icon(Icons.add, color: Colors.white),
                   ),

@@ -15,7 +15,7 @@ class BestSillingHeader extends StatelessWidget {
           textAlign: TextAlign.right,
           style: AppTextStyles.bold16.copyWith(color: const Color(0xFF0C0D0D)),
         ),
-        Spacer(),
+        const Spacer(),
         GestureDetector(
           onTap: () {
             GoRouter.of(context).push(AppRouter.kBestSellingRoute);

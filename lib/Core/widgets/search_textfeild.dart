@@ -9,7 +9,7 @@ class SearchTextfeild extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         boxShadow: [
           BoxShadow(
             color: Color(0x0A000000),
@@ -24,7 +24,7 @@ class SearchTextfeild extends StatelessWidget {
         decoration: InputDecoration(
           filled: true,
           fillColor: Colors.white,
-          label: Text('ابحث عن.......'),
+          label: const Text('ابحث عن.......'),
           hintStyle: AppTextStyles.bold13.copyWith(
             color: const Color(0xFF949D9E),
           ),
@@ -49,7 +49,7 @@ class SearchTextfeild extends StatelessWidget {
   OutlineInputBorder buildBorder() {
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(4),
-      borderSide: BorderSide(color: Colors.white, width: 1),
+      borderSide: const BorderSide(color: Colors.white, width: 1),
     );
   }
 }

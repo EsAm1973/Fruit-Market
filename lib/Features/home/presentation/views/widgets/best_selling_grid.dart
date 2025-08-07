@@ -14,7 +14,7 @@ class BestSellingGrid extends StatelessWidget {
         childAspectRatio: 163 / 190
       ),
       itemBuilder: (context, index) {
-        return FruitItem();
+        return const FruitItem();
       },
     );
   }

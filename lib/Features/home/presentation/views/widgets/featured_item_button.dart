@@ -9,12 +9,12 @@ class FeaturedItemButton extends StatelessWidget {
     return TextButton(
       onPressed: onpressed,
       style: TextButton.styleFrom(
-        padding: EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+        padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
       ),
-      child: FittedBox(child: Text('تسوق الان', style: AppTextStyles.bold13)),
+      child: const FittedBox(child: Text('تسوق الان', style: AppTextStyles.bold13)),
     );
   }
 }

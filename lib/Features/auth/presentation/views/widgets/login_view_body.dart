@@ -96,7 +96,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                   const DontHaveAccount(),
                   const SizedBox(height: 33),
                   const OrDivider(),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   LoginSocialButtom(
                     title: 'جوجل',
                     image: Assets.imagesGoogleIcon,
@@ -116,7 +116,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                           const SizedBox(height: 16),
                         ],
                       )
-                      : SizedBox(),
+                      : const SizedBox(),
                   LoginSocialButtom(
                     title: 'فيسبوك',
                     image: Assets.imagesFacebookIcon,

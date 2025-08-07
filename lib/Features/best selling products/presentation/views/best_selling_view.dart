@@ -23,8 +23,8 @@ class BestSellingView extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Container(
-              decoration: ShapeDecoration(
-                color: const Color(0xFFEEF8ED) /* green-50 */,
+              decoration: const ShapeDecoration(
+                color: Color(0xFFEEF8ED) /* green-50 */,
                 shape: OvalBorder(),
               ),
               child: SvgPicture.asset(
@@ -39,10 +39,10 @@ class BestSellingView extends StatelessWidget {
           onPressed: () {
             GoRouter.of(context).pop();
           },
-          icon: Icon(Icons.arrow_back_ios),
+          icon: const Icon(Icons.arrow_back_ios),
         ),
       ),
-      body: SafeArea(child: BestSellingViewBody()),
+      body: const SafeArea(child: BestSellingViewBody()),
     );
   }
 }

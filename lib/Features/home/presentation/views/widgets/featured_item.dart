@@ -27,7 +27,7 @@ class FeaturedItem extends StatelessWidget {
               alignment: Alignment.centerRight,
               padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 24),
               width: screenWidth * .5,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: Svg(Assets.imagesFeaturedShapeBackground),
                   fit: BoxFit.fill,
@@ -40,12 +40,12 @@ class FeaturedItem extends StatelessWidget {
                     'عروض العيد',
                     style: AppTextStyles.regular13.copyWith(color: Colors.white),
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   Text(
                     'خصم 25%',
                     style: AppTextStyles.bold19.copyWith(color: Colors.white),
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   FeaturedItemButton(onpressed: () {}),
                 ],
               ),

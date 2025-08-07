@@ -9,7 +9,7 @@ class SignupView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(context: context, title: 'حساب جديد'),
-      body: SafeArea(child: SignupViewBody()),
+      body: const SafeArea(child: SignupViewBody()),
     );
   }
 }

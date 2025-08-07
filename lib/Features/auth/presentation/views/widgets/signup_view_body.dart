@@ -47,15 +47,15 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                     hintText: 'الأسم بالكامل',
                     keyboardType: TextInputType.name,
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   CustomTextFormFeild(
                     onSaved: (value) => email = value!,
                     hintText: 'البريد الإلكتروني',
                     keyboardType: TextInputType.emailAddress,
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   PasswordFeild(onSaved: (value) => password = value!),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   TermsCheckbox(
                     onChecked: (value) {
                       setState(() {
@@ -63,7 +63,7 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                       });
                     },
                   ),
-                  SizedBox(height: 30),
+                  const SizedBox(height: 30),
                   BlocBuilder<SignupCubit, SignupState>(
                     builder: (context, state) {
                       if (state is SignupLoading) {
@@ -98,8 +98,8 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                       );
                     },
                   ),
-                  SizedBox(height: 38),
-                  SignupToLogin(),
+                  const SizedBox(height: 38),
+                  const SignupToLogin(),
                 ],
               ),
             ),

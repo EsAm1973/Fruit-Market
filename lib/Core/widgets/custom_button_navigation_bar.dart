@@ -17,7 +17,7 @@ class _CustomButtonNavigationBarState extends State<CustomButtonNavigationBar> {
     return Container(
       width: double.infinity,
       height: 70,
-      decoration: ShapeDecoration(
+      decoration: const ShapeDecoration(
         color: Colors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(

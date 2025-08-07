@@ -56,7 +56,7 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
             // ),
           ),
         ),
-        SizedBox(height: 30),
+        const SizedBox(height: 30),
         Visibility(
           visible: currentPage == 1 ? true : false,
           maintainSize: true,
@@ -73,7 +73,7 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
             ),
           ),
         ),
-        SizedBox(height: 40),
+        const SizedBox(height: 40),
       ],
     );
   }
