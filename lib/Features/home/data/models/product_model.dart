@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:fruit_market/Features/home/data/models/review_model.dart';
 import 'package:fruit_market/Features/home/domain/entites/product_entity.dart';
@@ -9,7 +8,6 @@ class ProductModel {
   final num price;
   final String description;
   String? imageUrl;
-  final File fileImage;
   final bool isFeatured;
   final int expiryDate;
   final bool isOrganic;
@@ -26,7 +24,6 @@ class ProductModel {
     required this.price,
     required this.description,
     this.imageUrl,
-    required this.fileImage,
     required this.isFeatured,
     required this.expiryDate,
     required this.isOrganic,
@@ -45,19 +42,18 @@ class ProductModel {
       price: json['price'],
       description: json['description'],
       imageUrl: json['imageUrl'],
-      fileImage: json['fileImage'],
       isFeatured: json['isFeatured'],
       expiryDate: json['expiryDate'],
       isOrganic: json['isOrganic'],
       unitAmount: json['unitAmount'],
       numberOfCalories: json['numberOfCalories'],
-      averageRating: json['averageRating'],
-      ratingCount: json['ratingCount'],
-      reviews:
-          (json['reviews'] as List)
-              .map((e) => ReviewModel.fromJson(e))
-              .toList(),
-      sellingCount: json['sellingCount'],
+      averageRating: (json['averageRating'] as num?) ?? 0,
+      ratingCount: (json['ratingCount'] as num?) ?? 0,
+      reviews: ((json['reviews'] as List?) ?? [])
+          .map((e) => ReviewModel.fromJson(Map<String, dynamic>.from(e)))
+          .toList(),
+      sellingCount:
+          ((json['sellingCount'] ?? json['sillingCount'] ?? 0) as num).toInt(),
     );
   }
 
@@ -68,7 +64,6 @@ class ProductModel {
       price: price,
       description: description,
       imageUrl: imageUrl,
-      fileImage: fileImage,
       isFeatured: isFeatured,
       expiryDate: expiryDate,
       isOrganic: isOrganic,

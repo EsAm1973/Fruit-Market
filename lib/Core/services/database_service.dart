@@ -16,9 +16,6 @@ abstract class DatabaseService {
 
   Future<List<Map<String, dynamic>>> getCollection({
     required String path,
-    String? orderBy, // اسم الحقل للترتيب
-    bool descending = false, // اتجاه الترتيب
-    int? limit, // عدد النتائج الأقصى
-    Map<String, dynamic>? whereEqual,
+    Map<String, dynamic>? query,
   });
 }

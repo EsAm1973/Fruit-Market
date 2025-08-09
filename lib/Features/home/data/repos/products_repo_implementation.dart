@@ -26,9 +26,7 @@ class ProductsRepoImplementation implements ProductsRepo {
     try {
       final rawList = await databaseService.getCollection(
         path: 'products',
-        orderBy: 'sellingCount',
-        descending: true,
-        limit: 10,
+        query: {'limit': 10, 'orderBy': 'sillingCount', 'descending': true},
       );
       List<ProductModel> bestSellingProducts =
           rawList.map((e) => ProductModel.fromJson(e)).toList();
