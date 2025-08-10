@@ -30,6 +30,10 @@ class Assets {
   /// assets/images/featured_shape_background.svg
   static const String imagesFeaturedShapeBackground = "assets/images/featured_shape_background.svg";
 
+  /// Assets for imagesFilter
+  /// assets/images/filter.svg
+  static const String imagesFilter = "assets/images/filter.svg";
+
   /// Assets for imagesGoogleIcon
   /// assets/images/google_icon.svg
   static const String imagesGoogleIcon = "assets/images/google_icon.svg";
