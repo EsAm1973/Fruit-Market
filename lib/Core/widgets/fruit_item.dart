@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:fruit_market/Core/utils/app_colors.dart';
 import 'package:fruit_market/Core/utils/app_text_styles.dart';
@@ -28,7 +29,20 @@ class FruitItem extends StatelessWidget {
             child: Column(
               children: [
                 const SizedBox(height: 20),
-                Image.network(product.imageUrl!),
+                CachedNetworkImage(
+                  imageUrl: product.imageUrl!,
+                  height: 90,
+                  placeholder:
+                      (context, url) => const Center(
+                        child: SizedBox(
+                          child: CircularProgressIndicator(strokeWidth: 2),
+                        ),
+                      ),
+                  errorWidget:
+                      (context, url, error) => const Center(
+                        child: Icon(Icons.broken_image, size: 36),
+                      ),
+                ),
                 ListTile(
                   title: Text(
                     product.productName,

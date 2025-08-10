@@ -8,7 +8,7 @@ ProductEntity getDummyProduct() {
     productCode: "APL-123",
     price: 2.5,
     description: "Fresh organic apple from local farms.",
-    imageUrl: "https://example.com/images/apple.png",
+    imageUrl: "https://saratogasnowmobile.com/wp-content/uploads/woocommerce-placeholder.png",
     isFeatured: true,
     expiryDate: 20250810, // YYYYMMDD format example
     isOrganic: true,
