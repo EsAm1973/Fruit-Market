@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_market/Core/helper_functions/build_error_bar.dart';
-import 'package:fruit_market/Core/utils/app_router.dart';
 import 'package:fruit_market/Core/widgets/custom_buttom.dart';
 import 'package:fruit_market/Core/widgets/custom_text_feild.dart';
 import 'package:fruit_market/Core/widgets/password_feild.dart';
@@ -30,7 +29,7 @@ class _SignupViewBodyState extends State<SignupViewBody> {
           buildErrorBar(context, state.message);
         }
         if (state is SignupSuccess) {
-          GoRouter.of(context).pushReplacement(AppRouter.kLoginRoute);
+          GoRouter.of(context).pop();
         }
       },
       builder: (context, state) {
@@ -48,15 +47,15 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                     hintText: 'الأسم بالكامل',
                     keyboardType: TextInputType.name,
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   CustomTextFormFeild(
                     onSaved: (value) => email = value!,
                     hintText: 'البريد الإلكتروني',
                     keyboardType: TextInputType.emailAddress,
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   PasswordFeild(onSaved: (value) => password = value!),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   TermsCheckbox(
                     onChecked: (value) {
                       setState(() {
@@ -64,7 +63,7 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                       });
                     },
                   ),
-                  SizedBox(height: 30),
+                  const SizedBox(height: 30),
                   BlocBuilder<SignupCubit, SignupState>(
                     builder: (context, state) {
                       if (state is SignupLoading) {
@@ -99,8 +98,8 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                       );
                     },
                   ),
-                  SizedBox(height: 38),
-                  SignupToLogin(),
+                  const SizedBox(height: 38),
+                  const SignupToLogin(),
                 ],
               ),
             ),

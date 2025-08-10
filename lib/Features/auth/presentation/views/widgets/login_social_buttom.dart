@@ -19,7 +19,7 @@ class LoginSocialButtom extends StatelessWidget {
       style: TextButton.styleFrom(
         minimumSize: const Size(double.infinity, 50),
         shape: RoundedRectangleBorder(
-          side: BorderSide(color: const Color(0xFFDCDEDE), width: 1),
+          side: const BorderSide(color: Color(0xFFDCDEDE), width: 1),
           borderRadius: BorderRadius.circular(16),
         ),
         backgroundColor: Colors.white,

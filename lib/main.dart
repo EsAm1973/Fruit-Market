@@ -31,7 +31,7 @@ class FruitMarket extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: S.delegate.supportedLocales,
-      locale: Locale('ar', 'AE'),
+      locale: const Locale('ar', 'AE'),
       routerConfig: AppRouter.router,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(

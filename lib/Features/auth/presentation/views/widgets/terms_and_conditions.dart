@@ -24,7 +24,7 @@ class _TermsCheckboxState extends State<TermsCheckbox> {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(4),
             ),
-            side: BorderSide(color: const Color(0xFFE6E9E9), width: 1.50),
+            side: const BorderSide(color: Color(0xFFE6E9E9), width: 1.50),
             value: _agreed,
 
             onChanged: (value) {
@@ -55,7 +55,7 @@ class _TermsCheckboxState extends State<TermsCheckbox> {
                     height: 1.70,
                   ),
                 ),
-                TextSpan(text: ' '),
+                const TextSpan(text: ' '),
                 TextSpan(
                   text: 'الخاصة',
                   style: AppTextStyles.semibold13.copyWith(
@@ -64,7 +64,7 @@ class _TermsCheckboxState extends State<TermsCheckbox> {
                     height: 1.70,
                   ),
                 ),
-                TextSpan(text: ' '),
+                const TextSpan(text: ' '),
                 TextSpan(
                   text: 'بنا',
                   style: AppTextStyles.semibold13.copyWith(

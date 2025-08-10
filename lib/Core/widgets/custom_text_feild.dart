@@ -38,7 +38,7 @@ class CustomTextFormFeild extends StatelessWidget {
         enabledBorder: buildBorder(),
         focusedBorder: buildBorder(),
         suffixIcon: suffixIcon,
-        suffixIconColor: Color(0xFFC9CECF),
+        suffixIconColor: const Color(0xFFC9CECF),
       ),
     );
   }
@@ -46,7 +46,7 @@ class CustomTextFormFeild extends StatelessWidget {
   OutlineInputBorder buildBorder() {
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(4),
-      borderSide: BorderSide(color: const Color(0xFFE6E9E9), width: 1),
+      borderSide: const BorderSide(color: Color(0xFFE6E9E9), width: 1),
     );
   }
 }

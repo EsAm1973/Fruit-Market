@@ -20,7 +20,7 @@ class OnboardingPageView extends StatelessWidget {
           title: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('مرحبًا بك في', style: AppTextStyles.bold23),
+              const Text('مرحبًا بك في', style: AppTextStyles.bold23),
               Text(
                 ' HUB',
                 style: AppTextStyles.bold23.copyWith(
@@ -38,7 +38,7 @@ class OnboardingPageView extends StatelessWidget {
           subtitle:
               'اكتشف تجربة تسوق فريدة مع FruitHUB. استكشف مجموعتنا الواسعة من الفواكه الطازجة الممتازة واحصل على أفضل العروض والجودة العالية.',
         ),
-        PageViewItem(
+        const PageViewItem(
           isVisible: false,
           image: Assets.imagesPageviewImage2,
           backgroundImage: Assets.imagesPageviewBackground2,
