@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_market/Core/widgets/custom_button_navigation_bar.dart';
+import 'package:fruit_market/Features/cart/presentation/views/cart_view.dart';
 import 'package:fruit_market/Features/home/presentation/views/home_view.dart';
 import 'package:fruit_market/Features/products/presentation/views/products_view.dart';
 
@@ -15,7 +16,7 @@ class _HomeNavigationBarState extends State<HomeNavigationBar> {
   final List<Widget> _pages = [
     const HomeView(),
     const ProductsView(),
-    Container(),
+    const CartView(),
     Container(),
   ];
   @override
