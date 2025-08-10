@@ -34,7 +34,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
         if (state is LoginError) {
           buildErrorBar(context, state.message);
         } else if (state is LoginSuccess) {
-          GoRouter.of(context).pushReplacement(AppRouter.kHomeRoute);
+          GoRouter.of(context).pushReplacement(AppRouter.kHomeNavigationBarRoute);
         }
       },
       builder: (context, state) {

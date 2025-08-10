@@ -28,7 +28,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
     if (isOnboardingViewed) {
       await Future.delayed(const Duration(seconds: 3));
       if (isLoggedIn) {
-        GoRouter.of(context).pushReplacement(AppRouter.kHomeRoute);
+        GoRouter.of(context).pushReplacement(AppRouter.kHomeNavigationBarRoute);
       } else {
         GoRouter.of(context).pushReplacement(AppRouter.kLoginRoute);
       }

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_market/Core/utils/app_text_styles.dart';
 import 'package:fruit_market/Core/utils/assets.dart';
-import 'package:fruit_market/Features/best%20selling%20products/presentation/views/widgets/best_selling_view_body.dart';
+import 'package:fruit_market/Features/all_bestsell_products/presentation/views/widgets/all_bestsell_products_view_body.dart';
 import 'package:go_router/go_router.dart';
 import 'package:svg_flutter/svg.dart';
 
-class BestSellingView extends StatelessWidget {
-  const BestSellingView({super.key});
+class AllBestSellProductsView extends StatelessWidget {
+  const AllBestSellProductsView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class BestSellingView extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: Text(
-          'الأكثر مبيعًا',
+          'الاكثر مبيعا',
           style: AppTextStyles.bold19.copyWith(color: const Color(0xFF0C0D0D)),
         ),
         actions: [
@@ -42,7 +42,7 @@ class BestSellingView extends StatelessWidget {
           icon: const Icon(Icons.arrow_back_ios),
         ),
       ),
-      body: const SafeArea(child: BestSellingViewBody()),
+      body: const SafeArea(child: AllBestSellProductsViewBody()),
     );
   }
 }
