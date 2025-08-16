@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_market/Core/utils/app_text_styles.dart';
+import 'package:fruit_market/Features/cart/presentation/manager/cart%20cubit/cart_cubit.dart';
 
 class CartHeader extends StatelessWidget {
   const CartHeader({super.key});
@@ -11,9 +13,9 @@ class CartHeader extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 16),
       clipBehavior: Clip.antiAlias,
       decoration: const BoxDecoration(color: Color(0xFFEBF9F1)),
-      child: const Text(
+      child: Text(
         textAlign: TextAlign.center,
-        'لديك 3 منتجات في سله التسوق',
+        'لديك ${context.watch<CartCubit>().cartEntity.cartList.length} منتجات في سله التسوق',
         style: AppTextStyles.regular13,
       ),
     );

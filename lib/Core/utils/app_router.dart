@@ -7,6 +7,7 @@ import 'package:fruit_market/Features/auth/presentation/manager/login%20cubit/lo
 import 'package:fruit_market/Features/auth/presentation/manager/signup%20cubit/signup_cubit.dart';
 import 'package:fruit_market/Features/auth/presentation/views/login_view.dart';
 import 'package:fruit_market/Features/auth/presentation/views/signup_view.dart';
+import 'package:fruit_market/Features/cart/presentation/manager/cart%20cubit/cart_cubit.dart';
 import 'package:fruit_market/Features/home/domain/repos/porducts_repo.dart';
 import 'package:fruit_market/Features/home/presentation/manager/products_cubit/products_cubit.dart';
 import 'package:fruit_market/Features/home/presentation/views/home_view.dart';
@@ -53,8 +54,13 @@ abstract class AppRouter {
       GoRoute(
         path: kHomeNavigationBarRoute,
         builder:
-            (context, state) => BlocProvider(
-              create: (context) => ProductsCubit(getIt<ProductsRepo>()),
+            (context, state) => MultiBlocProvider(
+              providers: [
+                BlocProvider(
+                  create: (context) => ProductsCubit(getIt<ProductsRepo>()),
+                ),
+                BlocProvider(create: (context) => CartCubit()),
+              ],
               child: const HomeNavigationBar(),
             ),
       ),
@@ -67,9 +73,7 @@ abstract class AppRouter {
         path: kBestSellingRoute,
         builder:
             (context, state) => BlocProvider(
-              create: (context) => ProductsCubit(
-                getIt<ProductsRepo>(),
-              ),
+              create: (context) => ProductsCubit(getIt<ProductsRepo>()),
               child: const AllBestSellProductsView(),
             ),
       ),
