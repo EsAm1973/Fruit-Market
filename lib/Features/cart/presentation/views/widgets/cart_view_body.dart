@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruit_market/Core/helper_functions/build_error_bar.dart';
 import 'package:fruit_market/Core/utils/app_router.dart';
 import 'package:fruit_market/Core/widgets/custom_buttom.dart';
 import 'package:fruit_market/Features/cart/presentation/manager/cart%20cubit/cart_cubit.dart';
@@ -23,7 +24,14 @@ class CartViewBody extends StatelessWidget {
             builder: (context, state) {
               return CustomButtom(
                 onpressed: () {
-                  GoRouter.of(context).push(AppRouter.kCheckoutRoute);
+                  if (context.read<CartCubit>().cartEntity.cartList.isEmpty) {
+                    buildErrorBar(context, 'السلة فارغة');
+                  } else {
+                    GoRouter.of(context).push(
+                      AppRouter.kCheckoutRoute,
+                      extra: context.read<CartCubit>().cartEntity,
+                    );
+                  }
                 },
                 text:
                     'الدفع  ${context.watch<CartCubit>().cartEntity.calculateTotalPrice()} جنيه',
