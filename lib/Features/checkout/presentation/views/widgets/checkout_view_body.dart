@@ -17,6 +17,11 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
   void initState() {
     super.initState();
     pageController = PageController();
+    pageController.addListener(() {
+      setState(() {
+        currentPageIndex = pageController.page!.toInt();
+      });
+    });
   }
 
   @override
@@ -25,6 +30,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
     pageController.dispose();
   }
 
+  int currentPageIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -32,19 +38,19 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
       child: Column(
         children: [
           const SizedBox(height: 20),
-          const CheckoutSteps(),
+          CheckoutSteps(currentPageIndex: currentPageIndex),
           Expanded(
             child: CheckOutStepsPageView(pageController: pageController),
           ),
           CustomButtom(
             onpressed: () {
               pageController.animateToPage(
-                2,
+                currentPageIndex + 1,
                 duration: const Duration(milliseconds: 300),
                 curve: Curves.linear,
               );
             },
-            text: 'التالى',
+            text: currentPageIndex == 2 ? 'الدفع عبر PayPal' : 'التالي',
           ),
           const SizedBox(height: 20),
         ],
