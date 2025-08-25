@@ -102,6 +102,10 @@ class Assets {
   /// assets/images/user_image.png
   static const String imagesUserImage = "assets/images/user_image.png";
 
+  /// Assets for imagesVisaIcon
+  /// assets/images/visa_icon.svg
+  static const String imagesVisaIcon = "assets/images/visa_icon.svg";
+
   /// Assets for imagesWatermelonTest
   /// assets/images/watermelon_test.png
   static const String imagesWatermelonTest = "assets/images/watermelon_test.png";

@@ -20,6 +20,6 @@ class CheckoutSteps extends StatelessWidget {
   }
 
   List<String> getSteps() {
-    return ['الشحن', 'العنوان', 'الدفع', 'المراجعة'];
+    return ['الشحن', 'العنوان', 'الدفع'];
   }
 }
