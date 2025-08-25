@@ -3,7 +3,7 @@ import 'package:fruit_market/Features/checkout/domain/entities/shippimg_address_
 
 class OrderEntity {
   final CartEntity cartEntity;
-  final bool? payWithCash;
+   bool? payWithCash;
   final ShippimgAddressEntity? shippingAddress;
 
   OrderEntity({

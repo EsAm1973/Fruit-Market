@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_market/Core/widgets/custom_buttom.dart';
+import 'package:fruit_market/Features/checkout/domain/entities/order_entity.dart';
 import 'package:fruit_market/Features/checkout/presentation/views/widgets/checkout_steps.dart';
 import 'package:fruit_market/Features/checkout/presentation/views/widgets/checkout_steps_pageview.dart';
+import 'package:provider/provider.dart';
 
 class CheckoutViewBody extends StatefulWidget {
   const CheckoutViewBody({super.key});
@@ -47,11 +49,19 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
           ),
           CustomButtom(
             onpressed: () {
-              pageController.animateToPage(
-                currentPageIndex + 1,
-                duration: const Duration(milliseconds: 300),
-                curve: Curves.linear,
-              );
+              if (context.read<OrderEntity>().payWithCash != null) {
+                pageController.animateToPage(
+                  currentPageIndex + 1,
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.linear,
+                );
+              }else{
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('يرجي تحديد طريقه الدفع'),
+                  ),
+                );
+              }
             },
             text: currentPageIndex == 2 ? 'الدفع عبر PayPal' : 'التالي',
           ),
