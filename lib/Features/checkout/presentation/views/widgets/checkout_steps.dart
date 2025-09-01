@@ -18,19 +18,22 @@ class CheckoutSteps extends StatelessWidget {
         return Expanded(
           child: GestureDetector(
             onTap: () {
-              if (context.read<OrderEntity>().payWithCash != null) {
-                pageController.animateToPage(
-                  index,
-                  duration: const Duration(milliseconds: 300),
-                  curve: Curves.linear,
-                );
-              }else{
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('يرجي تحديد طريقه الدفع'),
-                  ),
-                );
+              // Only validate going forward, allow going back freely
+              if (index > currentPageIndex) {
+                // Check if required data exists for next step
+                if (!canMoveToStep(index, context.read<OrderEntity>())) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text(getValidationMessage(index))),
+                  );
+                  return;
+                }
               }
+
+              pageController.animateToPage(
+                index,
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.linear,
+              );
             },
             child: StepItem(
               text: getSteps()[index],
@@ -41,6 +44,29 @@ class CheckoutSteps extends StatelessWidget {
         );
       }),
     );
+  }
+
+  bool canMoveToStep(int step, OrderEntity order) {
+    switch (step) {
+      case 1: // Address step
+        return order.shippingAddress != null;
+      case 2: // Payment step
+        return order.shippingAddress
+                .isValid(); // Assuming you have an isValid method
+      default:
+        return true;
+    }
+  }
+
+  String getValidationMessage(int step) {
+    switch (step) {
+      case 1:
+        return 'يرجى تحديد طريقة الشحن';
+      case 2:
+        return 'يرجى إكمال بيانات العنوان';
+      default:
+        return 'يرجى إكمال الخطوة السابقة';
+    }
   }
 
   List<String> getSteps() {

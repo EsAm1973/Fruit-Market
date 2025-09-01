@@ -14,7 +14,10 @@ class CheckoutViewBody extends StatefulWidget {
 
 class _CheckoutViewBodyState extends State<CheckoutViewBody> {
   late PageController pageController;
-
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  ValueNotifier<AutovalidateMode> valueNotifier = ValueNotifier(
+    AutovalidateMode.disabled,
+  );
   @override
   void initState() {
     super.initState();
@@ -30,6 +33,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
   void dispose() {
     super.dispose();
     pageController.dispose();
+    valueNotifier.dispose();
   }
 
   int currentPageIndex = 0;
@@ -45,22 +49,18 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
             pageController: pageController,
           ),
           Expanded(
-            child: CheckOutStepsPageView(pageController: pageController),
+            child: CheckOutStepsPageView(
+              pageController: pageController,
+              formKey: formKey,
+              valueListenable: valueNotifier,
+            ),
           ),
           CustomButtom(
             onpressed: () {
-              if (context.read<OrderEntity>().payWithCash != null) {
-                pageController.animateToPage(
-                  currentPageIndex + 1,
-                  duration: const Duration(milliseconds: 300),
-                  curve: Curves.linear,
-                );
-              }else{
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('يرجي تحديد طريقه الدفع'),
-                  ),
-                );
+              if (currentPageIndex == 0) {
+                handleShippingSectionValidation(context);
+              } else if (currentPageIndex == 1) {
+                handleAddressValidation(context);
               }
             },
             text: currentPageIndex == 2 ? 'الدفع عبر PayPal' : 'التالي',
@@ -69,5 +69,32 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
         ],
       ),
     );
+  }
+
+  void handleShippingSectionValidation(BuildContext context) {
+    if (context.read<OrderEntity>().payWithCash != null) {
+      pageController.animateToPage(
+        currentPageIndex + 1,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.linear,
+      );
+    } else {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text('يرجي تحديد طريقه الدفع')));
+    }
+  }
+
+  void handleAddressValidation(BuildContext context) {
+    if (formKey.currentState!.validate()) {
+      formKey.currentState!.save();
+      pageController.animateToPage(
+        currentPageIndex + 1,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.linear,
+      );
+    }else{
+      valueNotifier.value = AutovalidateMode.always;
+    }
   }
 }

@@ -3,16 +3,18 @@ import 'package:fruit_market/Features/checkout/presentation/views/widgets/confir
 import 'package:fruit_market/Features/checkout/presentation/views/widgets/request_summary_payment_section.dart';
 
 class PaymentSection extends StatelessWidget {
-  const PaymentSection({super.key});
-
+  const PaymentSection({super.key, required this.pageController});
+  final PageController pageController;
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return  Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        RequestSummaryPaymentSection(),
-        SizedBox(height: 30),
-        ConfirmRequestPaymentSection(),
+        const RequestSummaryPaymentSection(),
+        const SizedBox(height: 30),
+        ConfirmRequestPaymentSection(
+          pageController: pageController,
+        ),
       ],
     );
   }

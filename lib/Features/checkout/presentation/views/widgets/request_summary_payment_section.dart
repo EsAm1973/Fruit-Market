@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_market/Core/utils/app_text_styles.dart';
+import 'package:fruit_market/Features/checkout/domain/entities/order_entity.dart';
 import 'package:fruit_market/Features/checkout/presentation/views/widgets/payment_section_item.dart';
+import 'package:provider/provider.dart';
 
 class RequestSummaryPaymentSection extends StatelessWidget {
   const RequestSummaryPaymentSection({super.key});
@@ -22,7 +24,7 @@ class RequestSummaryPaymentSection extends StatelessWidget {
                 ),
               ),
               Text(
-                '150 جنيه',
+                '${context.read<OrderEntity>().cartEntity.calculateTotalPrice()} جنيه',
                 textAlign: TextAlign.right,
                 style: AppTextStyles.semibold16.copyWith(
                   color: const Color(0xFF0C0D0D),
@@ -43,7 +45,7 @@ class RequestSummaryPaymentSection extends StatelessWidget {
                 ),
               ),
               Text(
-                '30 جنيه',
+                '40 جنيه',
                 textAlign: TextAlign.right,
                 style: AppTextStyles.semibold16.copyWith(
                   color: const Color(0xFF0C0D0D),
@@ -58,12 +60,12 @@ class RequestSummaryPaymentSection extends StatelessWidget {
             child: Divider(thickness: 0.50, color: Color(0xFFCACECE)),
           ),
           const SizedBox(height: 8),
-          const Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('الكلي', style: AppTextStyles.bold16),
+              const Text('الكلي', style: AppTextStyles.bold16),
               Text(
-                '180 جنيه',
+                '${context.read<OrderEntity>().cartEntity.calculateTotalPrice() + 40} جنيه',
                 textAlign: TextAlign.right,
                 style: AppTextStyles.bold16,
               ),

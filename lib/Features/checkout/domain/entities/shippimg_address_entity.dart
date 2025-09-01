@@ -1,17 +1,24 @@
 class ShippimgAddressEntity {
-  final String name;
-  final String address;
-  final String city;
-  final String email;
-  final String phone;
-  final String addressDescription;
+  String? name;
+  String? address;
+  String? city;
+  String? email;
+  String? phone;
+  String? addressDescription;
 
   ShippimgAddressEntity({
-    required this.name,
-    required this.address,
-    required this.city,
-    required this.email,
-    required this.phone,
-    required this.addressDescription,
+    this.name,
+    this.address,
+    this.city,
+    this.email,
+    this.phone,
+    this.addressDescription,
   });
+
+  bool isValid() {
+    return addressDescription != null &&
+        addressDescription!.isNotEmpty &&
+        city != null &&
+        city!.isNotEmpty;
+  }
 }
