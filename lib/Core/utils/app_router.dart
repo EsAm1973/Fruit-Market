@@ -9,6 +9,8 @@ import 'package:fruit_market/Features/auth/presentation/views/login_view.dart';
 import 'package:fruit_market/Features/auth/presentation/views/signup_view.dart';
 import 'package:fruit_market/Features/cart/domin/entities/cart_entity.dart';
 import 'package:fruit_market/Features/cart/presentation/manager/cart%20cubit/cart_cubit.dart';
+import 'package:fruit_market/Features/checkout/domain/repos/orders_repo.dart';
+import 'package:fruit_market/Features/checkout/presentation/manager/Add%20Order/add_order_cubit.dart';
 import 'package:fruit_market/Features/checkout/presentation/views/checkout_view.dart';
 import 'package:fruit_market/Features/home/domain/repos/porducts_repo.dart';
 import 'package:fruit_market/Features/home/presentation/manager/products_cubit/products_cubit.dart';
@@ -83,8 +85,10 @@ abstract class AppRouter {
       GoRoute(
         path: kCheckoutRoute,
         builder:
-            (context, state) =>
-                CheckoutView(cartEntity: state.extra as CartEntity),
+            (context, state) => BlocProvider(
+              create: (context) => AddOrderCubit(getIt<OrdersRepo>()),
+              child: CheckoutView(cartEntity: state.extra as CartEntity),
+            ),
       ),
     ],
   );

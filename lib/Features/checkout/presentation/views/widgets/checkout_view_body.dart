@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruit_market/Core/helper_functions/build_error_bar.dart';
 import 'package:fruit_market/Core/widgets/custom_buttom.dart';
 import 'package:fruit_market/Features/checkout/domain/entities/order_entity.dart';
+import 'package:fruit_market/Features/checkout/presentation/manager/Add%20Order/add_order_cubit.dart';
 import 'package:fruit_market/Features/checkout/presentation/views/widgets/checkout_steps.dart';
 import 'package:fruit_market/Features/checkout/presentation/views/widgets/checkout_steps_pageview.dart';
 import 'package:provider/provider.dart';
@@ -39,34 +42,54 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
   int currentPageIndex = 0;
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: Column(
-        children: [
-          const SizedBox(height: 20),
-          CheckoutSteps(
-            currentPageIndex: currentPageIndex,
-            pageController: pageController,
-          ),
-          Expanded(
-            child: CheckOutStepsPageView(
+    return BlocListener<AddOrderCubit, AddOrderState>(
+      listener: (context, state) {
+        if (state is AddOrderSuccess) {
+          buildErrorBar(context, 'تم اضافة الطلب بنجاح');
+        } else if (state is AddOrderError) {
+          buildErrorBar(context, state.errorMessage);
+        }
+      },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: Column(
+          children: [
+            const SizedBox(height: 20),
+            CheckoutSteps(
+              currentPageIndex: currentPageIndex,
               pageController: pageController,
-              formKey: formKey,
-              valueListenable: valueNotifier,
             ),
-          ),
-          CustomButtom(
-            onpressed: () {
-              if (currentPageIndex == 0) {
-                handleShippingSectionValidation(context);
-              } else if (currentPageIndex == 1) {
-                handleAddressValidation(context);
-              }
-            },
-            text: currentPageIndex == 2 ? 'الدفع عبر PayPal' : 'التالي',
-          ),
-          const SizedBox(height: 20),
-        ],
+            Expanded(
+              child: CheckOutStepsPageView(
+                pageController: pageController,
+                formKey: formKey,
+                valueListenable: valueNotifier,
+              ),
+            ),
+            BlocBuilder<AddOrderCubit, AddOrderState>(
+              builder: (context, state) {
+                if (state is AddOrderLoading) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+                return CustomButtom(
+                  onpressed: () {
+                    if (currentPageIndex == 0) {
+                      handleShippingSectionValidation(context);
+                    } else if (currentPageIndex == 1) {
+                      handleAddressValidation(context);
+                    } else {
+                      context.read<AddOrderCubit>().addOrder(
+                        context.read<OrderEntity>(),
+                      );
+                    }
+                  },
+                  text: currentPageIndex == 2 ? 'الدفع عبر PayPal' : 'التالي',
+                );
+              },
+            ),
+            const SizedBox(height: 20),
+          ],
+        ),
       ),
     );
   }
@@ -93,7 +116,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
         duration: const Duration(milliseconds: 300),
         curve: Curves.linear,
       );
-    }else{
+    } else {
       valueNotifier.value = AutovalidateMode.always;
     }
   }
