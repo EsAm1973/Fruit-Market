@@ -1,3 +1,3 @@
   getCurrency() {
-    return 'EG';
+    return 'USD';
   }
