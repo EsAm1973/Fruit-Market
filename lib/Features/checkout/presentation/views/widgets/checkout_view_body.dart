@@ -126,6 +126,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
   void processPayment(BuildContext context) {
     var order = context.read<OrderEntity>();
     var paypalPaymentEntity = PaypalPaymentEntity.fromEntity(order);
+    var addOrderCubit=context.read<AddOrderCubit>();
     Navigator.of(context).push(
       MaterialPageRoute(
         builder:
@@ -138,6 +139,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
               onSuccess: (Map params) async {
                 print("onSuccess: $params");
                 GoRouter.of(context).pop();
+                addOrderCubit.addOrder(order);
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(content: Text('تمت الدفع بنجاح')),
                 );
