@@ -18,7 +18,7 @@ class CheckoutView extends StatelessWidget {
       ),
       body: SafeArea(
         child: Provider.value(
-          value: OrderEntity(cartEntity: cartEntity,uID: getUser().uid),
+          value: OrderEntity(cartEntity: cartEntity, uID: getUser().uid),
           child: const CheckoutViewBody(),
         ),
       ),

@@ -30,6 +30,6 @@ class OrderProductModel {
     "code": code,
     "price": price,
     "quantity": quantity,
-    "imageUrl": imageUrl
+    "imageUrl": imageUrl,
   };
 }

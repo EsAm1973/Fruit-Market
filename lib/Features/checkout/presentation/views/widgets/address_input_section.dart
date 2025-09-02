@@ -26,8 +26,7 @@ class AddressInputSection extends StatelessWidget {
                   CustomTextFormFeild(
                     hintText: 'الأسم بالكامل',
                     onSaved: (value) {
-                      context.read<OrderEntity>().shippingAddress.name =
-                          value!;
+                      context.read<OrderEntity>().shippingAddress.name = value!;
                     },
                     keyboardType: TextInputType.name,
                   ),

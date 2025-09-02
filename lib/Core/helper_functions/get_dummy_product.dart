@@ -1,4 +1,3 @@
-
 import 'package:fruit_market/Features/home/domain/entites/product_entity.dart';
 import 'package:fruit_market/Features/home/domain/entites/review_entity.dart';
 
@@ -8,7 +7,8 @@ ProductEntity getDummyProduct() {
     productCode: "APL-123",
     price: 2.5,
     description: "Fresh organic apple from local farms.",
-    imageUrl: "https://saratogasnowmobile.com/wp-content/uploads/woocommerce-placeholder.png",
+    imageUrl:
+        "https://saratogasnowmobile.com/wp-content/uploads/woocommerce-placeholder.png",
     isFeatured: true,
     expiryDate: 20250810, // YYYYMMDD format example
     isOrganic: true,

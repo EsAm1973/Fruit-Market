@@ -7,14 +7,12 @@ class PaymentSection extends StatelessWidget {
   final PageController pageController;
   @override
   Widget build(BuildContext context) {
-    return  Column(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const RequestSummaryPaymentSection(),
         const SizedBox(height: 30),
-        ConfirmRequestPaymentSection(
-          pageController: pageController,
-        ),
+        ConfirmRequestPaymentSection(pageController: pageController),
       ],
     );
   }

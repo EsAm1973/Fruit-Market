@@ -29,9 +29,7 @@ class _ProductsViewBodyState extends State<ProductsViewBody> {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: CustomScrollView(
         slivers: [
-          const SliverToBoxAdapter(
-            child: SearchTextfeild(),
-          ),
+          const SliverToBoxAdapter(child: SearchTextfeild()),
           BlocBuilder<ProductsCubit, ProductsState>(
             builder: (context, state) {
               // احسب العدد بحسب الحالة (عند التحميل ممكن تعرض صفر أو عدد dummy)

@@ -52,7 +52,7 @@ class CheckoutSteps extends StatelessWidget {
         return order.shippingAddress != null;
       case 2: // Payment step
         return order.shippingAddress
-                .isValid(); // Assuming you have an isValid method
+            .isValid(); // Assuming you have an isValid method
       default:
         return true;
     }

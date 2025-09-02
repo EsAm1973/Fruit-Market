@@ -38,7 +38,9 @@ class FeaturedItem extends StatelessWidget {
                 children: [
                   Text(
                     'عروض العيد',
-                    style: AppTextStyles.regular13.copyWith(color: Colors.white),
+                    style: AppTextStyles.regular13.copyWith(
+                      color: Colors.white,
+                    ),
                   ),
                   const SizedBox(height: 8),
                   Text(

@@ -10,7 +10,7 @@ class InactiveStepItem extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-         CircleAvatar(
+        CircleAvatar(
           backgroundColor: const Color(0xFFF2F3F3),
           radius: 11.5,
           child: Text(index, style: AppTextStyles.semibold13),

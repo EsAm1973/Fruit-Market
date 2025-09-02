@@ -16,9 +16,11 @@ class CustomButtom extends StatelessWidget {
         style: TextButton.styleFrom(
           backgroundColor: AppColors.primaryColor,
           foregroundColor: Colors.white,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
         ),
-        child: Text(text,style: AppTextStyles.bold16,),
+        child: Text(text, style: AppTextStyles.bold16),
       ),
     );
   }

@@ -14,7 +14,9 @@ class FeaturedItemButton extends StatelessWidget {
         foregroundColor: Colors.black,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
       ),
-      child: const FittedBox(child: Text('تسوق الان', style: AppTextStyles.bold13)),
+      child: const FittedBox(
+        child: Text('تسوق الان', style: AppTextStyles.bold13),
+      ),
     );
   }
 }

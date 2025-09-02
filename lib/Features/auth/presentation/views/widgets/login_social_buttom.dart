@@ -25,7 +25,7 @@ class LoginSocialButtom extends StatelessWidget {
         backgroundColor: Colors.white,
       ),
       child: ListTile(
-        leading: SvgPicture.asset(image,width: 25,height: 25,),
+        leading: SvgPicture.asset(image, width: 25, height: 25),
         title: Text(
           textAlign: TextAlign.center,
           'تسجيل دخول باستخدام $title',

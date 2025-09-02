@@ -14,7 +14,9 @@ class ActiveIcon extends StatelessWidget {
         padding: const EdgeInsets.only(left: 16),
         decoration: ShapeDecoration(
           color: const Color(0xFFEEEEEE),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(30),
+          ),
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,

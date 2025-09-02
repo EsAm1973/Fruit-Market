@@ -17,14 +17,15 @@ class ShippingAddressModel {
     required this.addressDescription,
   });
 
-  factory ShippingAddressModel.fromEntity(ShippimgAddressEntity entity) => ShippingAddressModel(
-    name: entity.name,
-    address: entity.address,
-    city: entity.city,
-    email: entity.email,
-    phone: entity.phone,
-    addressDescription: entity.addressDescription,
-  );
+  factory ShippingAddressModel.fromEntity(ShippimgAddressEntity entity) =>
+      ShippingAddressModel(
+        name: entity.name,
+        address: entity.address,
+        city: entity.city,
+        email: entity.email,
+        phone: entity.phone,
+        addressDescription: entity.addressDescription,
+      );
 
   toJson() => {
     "name": name,
