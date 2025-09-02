@@ -1,4 +1,3 @@
-
 import 'package:fruit_market/Features/home/domain/entites/review_entity.dart';
 
 class ReviewModel {

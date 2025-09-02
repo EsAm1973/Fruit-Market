@@ -55,8 +55,10 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                   child: Center(
                     child: Padding(
                       padding: const EdgeInsets.all(16),
-                      child: Text(state.message,
-                          style: const TextStyle(color: Colors.red)),
+                      child: Text(
+                        state.message,
+                        style: const TextStyle(color: Colors.red),
+                      ),
                     ),
                   ),
                 );

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:fruit_market/Core/services/firebase_auth_services.dart';
 import 'package:fruit_market/Core/services/shared_prefrences_sengelton.dart';

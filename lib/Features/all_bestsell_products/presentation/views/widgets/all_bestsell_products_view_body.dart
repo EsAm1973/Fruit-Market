@@ -10,10 +10,12 @@ class AllBestSellProductsViewBody extends StatefulWidget {
   const AllBestSellProductsViewBody({super.key});
 
   @override
-  State<AllBestSellProductsViewBody> createState() => _AllBestSellProductsViewBodyState();
+  State<AllBestSellProductsViewBody> createState() =>
+      _AllBestSellProductsViewBodyState();
 }
 
-class _AllBestSellProductsViewBodyState extends State<AllBestSellProductsViewBody> {
+class _AllBestSellProductsViewBodyState
+    extends State<AllBestSellProductsViewBody> {
   @override
   void initState() {
     super.initState();
@@ -27,12 +29,7 @@ class _AllBestSellProductsViewBodyState extends State<AllBestSellProductsViewBod
       child: CustomScrollView(
         slivers: [
           const SliverToBoxAdapter(
-            child: Column(
-              children: [
-                SearchTextfeild(),
-                SizedBox(height: 12),
-              ],
-            ),
+            child: Column(children: [SearchTextfeild(), SizedBox(height: 12)]),
           ),
           BlocBuilder<ProductsCubit, ProductsState>(
             builder: (context, state) {
