@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fruit_market/Features/checkout/domain/entities/order_entity.dart';
+import 'package:fruit_market/Features/checkout/domain/entities/order_input_entity.dart';
 import 'package:fruit_market/Features/checkout/presentation/views/widgets/shipping_item.dart';
 
 class ShippingSection extends StatefulWidget {
@@ -22,12 +22,12 @@ class _ShippingSectionState extends State<ShippingSection>
           title: 'الدفع عند الاستلام',
           subtitle: 'التسليم من المكان',
           price:
-              '${context.read<OrderEntity>().cartEntity.calculateTotalPrice().toString()} جنيه',
+              '${context.read<OrderInputEntity>().cartEntity.calculateTotalPrice().toString()} جنيه',
           isSelected: selectedIndex == 0,
           onTap: () {
             selectedIndex = 0;
             setState(() {
-              context.read<OrderEntity>().payWithCash = true;
+              context.read<OrderInputEntity>().payWithCash = true;
             });
           },
         ),
@@ -36,12 +36,12 @@ class _ShippingSectionState extends State<ShippingSection>
           title: 'الدفع اونلاين',
           subtitle: 'يرجي تحديد طريقه الدفع',
           price:
-              '${(context.read<OrderEntity>().cartEntity.calculateTotalPrice() + 40).toString()} جنيه',
+              '${(context.read<OrderInputEntity>().cartEntity.calculateTotalPrice() + 40).toString()} جنيه',
           isSelected: selectedIndex == 1,
           onTap: () {
             selectedIndex = 1;
             setState(() {
-              context.read<OrderEntity>().payWithCash = false;
+              context.read<OrderInputEntity>().payWithCash = false;
             });
           },
         ),

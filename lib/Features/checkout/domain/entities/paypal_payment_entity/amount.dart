@@ -1,5 +1,5 @@
 import 'package:fruit_market/Core/helper_functions/get_currency.dart';
-import 'package:fruit_market/Features/checkout/domain/entities/order_entity.dart';
+import 'package:fruit_market/Features/checkout/domain/entities/order_input_entity.dart';
 
 import 'details.dart';
 
@@ -16,7 +16,7 @@ class Amount {
     'details': details?.toJson(),
   };
 
-  factory Amount.fromEntity(OrderEntity order) => Amount(
+  factory Amount.fromEntity(OrderInputEntity order) => Amount(
     total: order.calculateTotalPriceAfterDiscountAndShipping().toString(),
     currency: getCurrency(),
     details: Details.fromEntity(order),

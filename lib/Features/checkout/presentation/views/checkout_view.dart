@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fruit_market/Core/helper_functions/get_user.dart';
 import 'package:fruit_market/Core/utils/app_text_styles.dart';
 import 'package:fruit_market/Features/cart/domin/entities/cart_entity.dart';
-import 'package:fruit_market/Features/checkout/domain/entities/order_entity.dart';
+import 'package:fruit_market/Features/checkout/domain/entities/order_input_entity.dart';
 import 'package:fruit_market/Features/checkout/presentation/views/widgets/checkout_view_body.dart';
 import 'package:provider/provider.dart';
 
@@ -18,7 +18,7 @@ class CheckoutView extends StatelessWidget {
       ),
       body: SafeArea(
         child: Provider.value(
-          value: OrderEntity(cartEntity: cartEntity, uID: getUser().uid),
+          value: OrderInputEntity(cartEntity: cartEntity, uID: getUser().uid),
           child: const CheckoutViewBody(),
         ),
       ),

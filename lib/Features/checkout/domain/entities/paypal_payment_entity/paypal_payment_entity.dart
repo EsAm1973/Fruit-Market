@@ -1,4 +1,4 @@
-import 'package:fruit_market/Features/checkout/domain/entities/order_entity.dart';
+import 'package:fruit_market/Features/checkout/domain/entities/order_input_entity.dart';
 
 import 'amount.dart';
 import 'item_list.dart';
@@ -16,7 +16,7 @@ class PaypalPaymentEntity {
     'itemList': itemList?.toJson(),
   };
 
-  factory PaypalPaymentEntity.fromEntity(OrderEntity entity) {
+  factory PaypalPaymentEntity.fromEntity(OrderInputEntity entity) {
     return PaypalPaymentEntity(
       amount: Amount.fromEntity(entity),
       description: 'PayPal Payment',

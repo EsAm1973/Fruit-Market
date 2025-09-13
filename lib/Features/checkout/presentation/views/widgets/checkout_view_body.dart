@@ -4,7 +4,7 @@ import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
 import 'package:fruit_market/Core/helper_functions/build_error_bar.dart';
 import 'package:fruit_market/Core/utils/app_keys.dart';
 import 'package:fruit_market/Core/widgets/custom_buttom.dart';
-import 'package:fruit_market/Features/checkout/domain/entities/order_entity.dart';
+import 'package:fruit_market/Features/checkout/domain/entities/order_input_entity.dart';
 import 'package:fruit_market/Features/checkout/domain/entities/paypal_payment_entity/paypal_payment_entity.dart';
 import 'package:fruit_market/Features/checkout/presentation/manager/Add%20Order/add_order_cubit.dart';
 import 'package:fruit_market/Features/checkout/presentation/views/widgets/checkout_steps.dart';
@@ -97,7 +97,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
   }
 
   void handleShippingSectionValidation(BuildContext context) {
-    if (context.read<OrderEntity>().payWithCash != null) {
+    if (context.read<OrderInputEntity>().payWithCash != null) {
       pageController.animateToPage(
         currentPageIndex + 1,
         duration: const Duration(milliseconds: 300),
@@ -124,7 +124,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
   }
 
   void processPayment(BuildContext context) {
-    var order = context.read<OrderEntity>();
+    var order = context.read<OrderInputEntity>();
     var paypalPaymentEntity = PaypalPaymentEntity.fromEntity(order);
     var addOrderCubit=context.read<AddOrderCubit>();
     Navigator.of(context).push(

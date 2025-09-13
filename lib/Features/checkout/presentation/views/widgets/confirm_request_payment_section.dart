@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_market/Core/utils/app_text_styles.dart';
-import 'package:fruit_market/Features/checkout/domain/entities/order_entity.dart';
+import 'package:fruit_market/Features/checkout/domain/entities/order_input_entity.dart';
 import 'package:fruit_market/Features/checkout/presentation/views/widgets/payment_section_item.dart';
 import 'package:provider/provider.dart';
 
@@ -92,7 +92,7 @@ class ConfirmRequestPaymentSection extends StatelessWidget {
                   ),
                   const SizedBox(width: 10),
                   Text(
-                    'طابق ${context.read<OrderEntity>().shippingAddress.addressDescription} ,مدينة ${context.read<OrderEntity>().shippingAddress.address}',
+                    'طابق ${context.read<OrderInputEntity>().shippingAddress.addressDescription} ,مدينة ${context.read<OrderInputEntity>().shippingAddress.address}',
                     textAlign: TextAlign.right,
                     style: AppTextStyles.regular16.copyWith(
                       color: const Color(0xFF4E5556),

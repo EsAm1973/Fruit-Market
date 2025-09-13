@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:fruit_market/Core/errors/failures.dart';
 import 'package:fruit_market/Core/services/database_service.dart';
 import 'package:fruit_market/Features/checkout/data/models/order_model.dart';
-import 'package:fruit_market/Features/checkout/domain/entities/order_entity.dart';
+import 'package:fruit_market/Features/checkout/domain/entities/order_input_entity.dart';
 import 'package:fruit_market/Features/checkout/domain/repos/orders_repo.dart';
 
 class OrdersRepoImpl implements OrdersRepo {
@@ -10,7 +10,7 @@ class OrdersRepoImpl implements OrdersRepo {
 
   OrdersRepoImpl({required this.firestoreService});
   @override
-  Future<Either<Failures, void>> addOrder(OrderEntity order) async {
+  Future<Either<Failures, void>> addOrder(OrderInputEntity order) async {
     try {
       await firestoreService.addData(
         path: 'orders',

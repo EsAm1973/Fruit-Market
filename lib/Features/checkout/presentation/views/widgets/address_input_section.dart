@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:fruit_market/Core/widgets/custom_text_feild.dart';
-import 'package:fruit_market/Features/checkout/domain/entities/order_entity.dart';
+import 'package:fruit_market/Features/checkout/domain/entities/order_input_entity.dart';
 import 'package:provider/provider.dart';
 
 class AddressInputSection extends StatelessWidget {
@@ -26,7 +26,7 @@ class AddressInputSection extends StatelessWidget {
                   CustomTextFormFeild(
                     hintText: 'الأسم بالكامل',
                     onSaved: (value) {
-                      context.read<OrderEntity>().shippingAddress.name = value!;
+                      context.read<OrderInputEntity>().shippingAddress.name = value!;
                     },
                     keyboardType: TextInputType.name,
                   ),
@@ -34,7 +34,7 @@ class AddressInputSection extends StatelessWidget {
                   CustomTextFormFeild(
                     hintText: 'البريد الإلكتروني',
                     onSaved: (value) {
-                      context.read<OrderEntity>().shippingAddress.email =
+                      context.read<OrderInputEntity>().shippingAddress.email =
                           value!;
                     },
                     keyboardType: TextInputType.emailAddress,
@@ -43,7 +43,7 @@ class AddressInputSection extends StatelessWidget {
                   CustomTextFormFeild(
                     hintText: 'العنوان',
                     onSaved: (value) {
-                      context.read<OrderEntity>().shippingAddress.address =
+                      context.read<OrderInputEntity>().shippingAddress.address =
                           value!;
                     },
                     keyboardType: TextInputType.streetAddress,
@@ -52,7 +52,7 @@ class AddressInputSection extends StatelessWidget {
                   CustomTextFormFeild(
                     hintText: 'رقم الجوال',
                     onSaved: (value) {
-                      context.read<OrderEntity>().shippingAddress.phone =
+                      context.read<OrderInputEntity>().shippingAddress.phone =
                           value!;
                     },
                     keyboardType: TextInputType.number,
@@ -62,7 +62,7 @@ class AddressInputSection extends StatelessWidget {
                     hintText: 'رقم الطابق.رقم الشقة',
                     onSaved: (value) {
                       context
-                          .read<OrderEntity>()
+                          .read<OrderInputEntity>()
                           .shippingAddress
                           .addressDescription = value!;
                     },

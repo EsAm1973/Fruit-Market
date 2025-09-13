@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fruit_market/Features/checkout/domain/entities/order_entity.dart';
+import 'package:fruit_market/Features/checkout/domain/entities/order_input_entity.dart';
 import 'package:fruit_market/Features/checkout/presentation/views/widgets/step_item.dart';
 
 class CheckoutSteps extends StatelessWidget {
@@ -21,7 +21,7 @@ class CheckoutSteps extends StatelessWidget {
               // Only validate going forward, allow going back freely
               if (index > currentPageIndex) {
                 // Check if required data exists for next step
-                if (!canMoveToStep(index, context.read<OrderEntity>())) {
+                if (!canMoveToStep(index, context.read<OrderInputEntity>())) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(content: Text(getValidationMessage(index))),
                   );
@@ -46,7 +46,7 @@ class CheckoutSteps extends StatelessWidget {
     );
   }
 
-  bool canMoveToStep(int step, OrderEntity order) {
+  bool canMoveToStep(int step, OrderInputEntity order) {
     switch (step) {
       case 1: // Address step
         return order.shippingAddress != null;
